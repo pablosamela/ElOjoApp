@@ -18,8 +18,7 @@ class Menu extends Component {
       'http://www.elojodigital.com/all-sections-json',
       {
         mode: "cors",
-        method: 'GET',
-        headers: {'Content-Type':'application/json'}
+        method: 'GET'
       }
     )
     .then(
@@ -65,12 +64,13 @@ class Menu extends Component {
                 <a href="/" className="nav-link" title="El Ojo digital">Inicio</a>
               </li>
                 { sections.map((section,i) => (
-                  <li className="nav-item active">
-                    <a href="{sections.id}" className="nav-link" title="{ sections.description }">
-                    { sections.name }
+                  <li className="nav-item active" key={i}>
+                    <a href="{{ section.section.id }}" className="nav-link" title="{{ section.section.description }}">
+                      { section.section.name }
                     </a>
                   </li>
-                ))}
+                )) 
+                }
               </ul>
             </div>
           </div>
