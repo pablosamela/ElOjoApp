@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Menu extends Component {
   
@@ -13,22 +14,14 @@ class Menu extends Component {
  
   }
   
-  loadFromServer () {
-    fetch(
-      'http://www.elojodigital.com/all-sections-json',
-      {
-        mode: "cors",
-        method: 'GET'
-      }
-    )
-    .then(
-      res => res.json()
-    )
+  loadFromServer() {
+    axios.get('http://www.elojodigital.com/all-sections-json')
     .then(
       (result) => {
+        console.log(result);
         this.setState({
           isLoaded: true,
-          sections: result.sections
+          sections: result.data.sections
         });
       },
       (error) => {
@@ -63,14 +56,15 @@ class Menu extends Component {
               <li className="nav-item active">
                 <a href="/" className="nav-link" title="El Ojo digital">Inicio</a>
               </li>
-                { sections.map((section,i) => (
-                  <li className="nav-item active" key={i}>
-                    <a href="{{ section.section.id }}" className="nav-link" title="{{ section.section.description }}">
-                      { section.section.name }
-                    </a>
-                  </li>
-                )) 
-                }
+                { sections.map(
+                  (section,i) => (
+                    <li className="nav-item active" key={i}>
+                      <a href="{{ section.section.id }}" className="nav-link" title="{{ section.section.description }}">
+                        { section.section.name }
+                      </a>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           </div>
