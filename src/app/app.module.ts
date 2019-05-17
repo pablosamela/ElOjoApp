@@ -22,3 +22,8 @@ import { MenuComponent } from './layout/menu/menu.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+// https://medium.com/@motcowley/angular-folder-structure-d1809be95542
+// https://github.com/ngx-rocket/starter-kit/blob/master/tsconfig.json
+// https://itnext.io/building-an-enterprise-grade-angular-project-structure-f5be32533ba3

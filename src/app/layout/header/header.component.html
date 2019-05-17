@@ -1,10 +1,10 @@
 <header>
-  <div className="container">
+  <div class="container">
       <a href="/" title="El Ojo Digital">
         <img src="/assets/img/logo.svg" alt="" />
       </a>
       <br />
-    <small>Viernes, 22 de Febrero de 2019 - 13:58</small>
+    <small>{{ today | date:'fullDate' }}</small>
   </div>
-  <!-- Menu /-->
+  <ojo-menu></ojo-menu>
 </header>

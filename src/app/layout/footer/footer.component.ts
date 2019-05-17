@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ojo-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.sass']
+  templateUrl: './footer.component.html'
 })
 export class FooterComponent implements OnInit {
 
