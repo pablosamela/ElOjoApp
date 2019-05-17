@@ -11,7 +11,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   get(url: string ): Observable<Data> {
-    const httpRequest$ ;
+    const httpRequest$ = ;
 
 
     return httpRequest$;
