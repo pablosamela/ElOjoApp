@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Params, Data } from '@angular/router';
+import { Data } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { settings } from '@app/settings/app.settings';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,6 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   get(url: string ): Observable<Data> {
-    const httpRequest$ = ;
-
-
-    return httpRequest$;
+    return this.http.get(settings.endpoint + url);
   }
 }

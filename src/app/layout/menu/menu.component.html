@@ -9,9 +9,9 @@
       <li class="nav-item active">
         <a href="/" class="nav-link" title="El Ojo digital">Inicio</a>
       </li>
-        <li class="nav-item" key={i} *ngFor="">
-          <a>
-             section.section.name
+        <li class="nav-item" *ngFor="let item of items">
+          <a routerLink="/section/{{item.section.id}}">
+            {{ item.section.name }}
           </a>
         </li>
       </ul>

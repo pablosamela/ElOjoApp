@@ -1,0 +1,11 @@
+<article class="my-2" *ngFor="let article of articles">
+  <small>{{article.cintillo}}: {{article.volanta}}</small><br>
+  <h5 class="mt-2 mb-2">
+  <a routerLink="/article/{{article.nid}}" class="my-2">
+    {{article.title}}
+  </a>
+</h5>
+<p class="border-bottom my-2 pb-2">
+  <em>{{article.bajada}}</em>
+</p>
+</article>
