@@ -17,7 +17,8 @@ export class SectionComponent implements OnInit {
   ngOnInit() {
     this.sectionSubscription = this.route.params.subscribe(
       (response) => {
-        this.http.get(`json/seccion/${response.id}`).subscribe(httpResponse => {
+        this.http.get(`json/seccion/${response.id}`).subscribe(
+          (httpResponse: any) => {
           this.articles = httpResponse;
         });
       }
