@@ -16,15 +16,15 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
     this.principal = [];
     this.secondary = [];
-    
-    this.http.get('json/nodequeue/principal').subscribe( 
-      (httpResponse: any) => {
+
+    this.http.get('json/nodequeue/principal').subscribe(
+      (httpResponse: Article[]) => {
         this.principal = httpResponse;
       }
     );
 
     this.http.get('json/nodequeue/secondary').subscribe(
-      (httpResponse: any) => {
+      (httpResponse: Article[]) => {
         this.secondary = httpResponse;
       }
     );

@@ -7,7 +7,7 @@
         </small><br />
         <img src="{{ article.photo.src}}" alt="{{ article.photo.alt}}" class="w-100 img-fluid border p-1 rounded" />
         <h1 class="my-3">
-          <a routerLink="article/{{ article.id }}" class="node">
+          <a routerLink="/article/{{ article.id }}" class="node">
             {{ article.title }}
           </a>
         </h1>
@@ -25,11 +25,11 @@
           {{ article.cintillo }}: {{article.volanta}}
         </small><br />
         <img src="{{ article.photo.src}}" alt="{{ article.photo.alt}}" class="w-100 img-fluid border p-1 rounded" />
-        <h5 class="my-3">
-          <a href="{{ article.path }}" class="node">
+        <h3 class="my-3">
+          <a routerLink="/article/{{ article.id }}" class="node">
             {{ article.title }}
           </a>
-        </h5>
+        </h3>
         <p>
           {{ article.bajada }}
         </p>

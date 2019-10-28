@@ -12,5 +12,6 @@ export class Article {
     src: string;
     alt: string;
     title: string;
-  };  
+  };
+  body: string;
 }
