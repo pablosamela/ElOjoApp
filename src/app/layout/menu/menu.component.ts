@@ -11,9 +11,9 @@ export class MenuComponent implements OnInit {
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
-    this.httpService.get('all-sections-json').subscribe(
+    this.httpService.get('json/json/vocabulary/1').subscribe(
       response => {
-        if(response && response.sections){
+        if (response && response.sections) {
           this.items = response.sections;
         }
       }

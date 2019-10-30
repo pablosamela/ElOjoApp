@@ -1,4 +1,5 @@
 import { Photo } from './photo.model';
+import { Journalist } from './journalist.model';
 
 export class Article {
   id: number;
@@ -8,10 +9,8 @@ export class Article {
   cintillo: string;
   volanta: string;
   path: string;
-  photo: {
-    src: string;
-    alt: string;
-    title: string;
-  };
   body: string;
+  periodista: number;
+  photo: Photo;
+  journalist: Journalist;
 }

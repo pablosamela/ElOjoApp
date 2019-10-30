@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Data } from '@angular/router';
 import { HttpService } from '@app/shared/services/http.service';
 import { Article } from '@app/shared/models/article.model';
 

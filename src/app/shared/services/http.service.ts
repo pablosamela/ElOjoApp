@@ -14,4 +14,5 @@ export class HttpService {
   get(url: string ): Observable<Data> {
     return this.http.get(settings.endpoint + url);
   }
+
 }

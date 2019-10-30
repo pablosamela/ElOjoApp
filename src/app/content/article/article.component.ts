@@ -1,28 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '@app/shared/models/article.model';
-import { HttpService } from '@app/shared/services/http.service';
 import { ActivatedRoute } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { take, filter, mergeMap, map, flatMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { ArticleService } from '@app/shared/services/article.service';
+import { Journalist } from '@app/shared/models/journalist.model';
 @Component({
   selector: 'ojo-article',
   templateUrl: './article.component.html'
 })
 export class ArticleComponent implements OnInit {
 
-  articles: Article[] = [];
+  article$: Observable<Article>;
 
-  constructor(private route: ActivatedRoute, private http: HttpService) { }
+  constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
 
   ngOnInit() {
-    this.route.params.pipe(
-      take(1)
-    ).subscribe(
-      (response: any) => {
-        this.http.get(`json/node/${response.id}`).subscribe(
-          (httpResponse: Article[]) => {
-            this.articles = httpResponse;
-          });
-      }
-    );
+    const id = this.route.snapshot.paramMap.get('id');
+    this.article$ = this.articleService.getArticleById(id);
   }
 }

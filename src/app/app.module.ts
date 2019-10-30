@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SectionComponent } from './content/section/section.component';
 import { LandingComponent } from './content/landing/landing.component';
 import { ArticleComponent } from './content/article/article.component';
+import { JournalistComponent } from './content/article/journalist/journalist.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ArticleComponent } from './content/article/article.component';
     MenuComponent,
     SectionComponent,
     LandingComponent,
-    ArticleComponent
+    ArticleComponent,
+    JournalistComponent
   ],
   imports: [
     BrowserModule,

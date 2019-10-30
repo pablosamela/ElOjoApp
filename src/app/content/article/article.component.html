@@ -1,4 +1,5 @@
-<article class="m-2" *ngFor="let article of articles">
+
+<article class="m-2" *ngIf="(article$ | async) as article; else loading">
   <small class="m-3">{{article.cintillo}}: {{article.volanta}}</small><br>
   <h1 class="my-2">
     <a routerLink="/article/{{article.id}}" class="m-3">
@@ -11,4 +12,9 @@
   <p class="border-bottom m-3 pb-3">
     {{article.body}}
   </p>
+  <ojo-journalist [id]="article.periodista"></ojo-journalist>
 </article>
+
+<ng-template #loading>
+  Loading stuff...
+</ng-template>
