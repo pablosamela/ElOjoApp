@@ -13,4 +13,5 @@ export class Article {
   periodista: number;
   photo: Photo;
   journalist: Journalist;
+  tags: string;
 }
