@@ -1,33 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpService } from '@app/shared/services/http.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { DataService } from '@app/shared/services/data.service';
 import { Article } from '@app/shared/models/article.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ojo-section',
   templateUrl: './section.component.html'
 })
 export class SectionComponent implements OnInit {
-  private sectionSubscription: any;
-  articles: Article[];
+  articles$: Observable<Article[]>;
+  title: string;
 
-  constructor(private route: ActivatedRoute,
-              private http: HttpService) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit() {
-    this.sectionSubscription = this.route.params.subscribe(
-      (response) => {
-        this.http.get(`json/seccion/${response.id}`).subscribe(
-          (httpResponse: any) => {
-          this.articles = httpResponse;
-        });
-      }
-    );
+    this.route.paramMap.pipe(
+      map((params: ParamMap) => {
+        const id = params.get('id');
+        return this.dataService.getArticlesBySectionId(id);
+      })
+    ).subscribe(articles => {
+      this.title = articles[0]?.section;
+    });
   }
-
-
-  ngOnDestroy(){
-    this.sectionSubscription.unsubscribe();
-  }
-
 }

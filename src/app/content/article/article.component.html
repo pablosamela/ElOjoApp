@@ -1,23 +1,24 @@
-
-<article class="m-2" *ngIf="(article$ | async) as article; else loading">
-  <small class="m-3">{{article.cintillo}}: {{article.volanta}}</small><br>
-  <h1 class="my-2">
-    <a routerLink="/article/{{article.id}}" class="m-3">
-      {{article.title}}
-    </a>
-  </h1>
-  <p class="border-bottom m-3 pb-3">
-    <em>{{article.bajada}}</em>
-  </p>
-  <p class="border-bottom m-3 pb-3">
-    {{article.body}}
-  </p>
-  <ojo-journalist [id]="article.periodista"></ojo-journalist>
-  <p class="border-bottom m-3 pb-3">
-    {{article.tags}}
-  </p>
-</article>
-
+<div class="container article">
+  <article class="m-2" *ngIf="(article$ | async) as article; else loading">
+    <small>{{article.cintillo}}: {{article.volanta}}</small><br>
+    <h1 class="my-2">
+      <a routerLink="/article/{{article.id}}">
+        {{article.title}}
+      </a>
+    </h1>
+    <p class="border-bottom pb-3">
+      <em>{{article.bajada}}</em>
+    </p>
+    <img src="{{ article.photo.src}}" alt="{{ article.photo.alt}}"  title="{{ article.photo.alt}}" class="w-100 img-fluid border p-1 rounded" />
+    <p class="border-bottom pb-3">
+      {{article.body}}
+    </p>
+    <ojo-journalist-card [id]="article.periodista"></ojo-journalist-card>
+    <p class="border-bottom pb-3">
+      {{article.tags}}
+    </p>
+  </article>
+</div>
 <ng-template #loading>
   Loading stuff...
 </ng-template>

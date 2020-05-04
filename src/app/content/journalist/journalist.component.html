@@ -1,0 +1,33 @@
+<div class="container border-bottom pb-3 mb-3" *ngIf="(journalist$ | async) as journalist">
+  <h1>{{journalist.title}}</h1>
+  <div class="row">
+    <div class="col-3" *ngIf="journalist.photo">
+      <img src="{{journalist.photo}}" alt="{{journalist.title}}" class="img-thumbnail p-1" />
+    </div>
+    <div [ngClass]="{'col-9': journalist.photo, 'col-12': !journalist.photo}">
+      <div class="text-right">
+        <span class="text-muted"> Seguir en </span>
+        <a href="https://twitter.com/{{journalist.twitter}}" target="_blank" class="text-right">
+          @{{journalist.twitter}}
+        </a>
+      </div>
+      <em>{{journalist.body}}.</em>
+    </div>
+  </div>
+</div>
+
+<div class="container sections my-3">
+  <article *ngFor="let article of (articles$ | async)">
+    <div><small>{{article.cintillo}}: {{article.volanta}}</small></div>
+    <img src="{{ article.photo.src}}" alt="{{ article.photo.alt}}" class="img-thumbnail p-1 mr-2 mb-3 float-left"
+      *ngIf="article.photo.src" />
+    <h3 class="mb-0">
+      <a routerLink="/article/{{article.id}}">
+        {{article.title}}
+      </a>
+    </h3>
+    <p class="border-bottom pb-3">
+      <em>{{article.bajada}}</em>
+    </p>
+  </article>
+</div>

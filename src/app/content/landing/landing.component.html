@@ -1,39 +1,34 @@
-<section class="m-3">
-  <div>
-    <article *ngFor="let article of principal" class="row my-3 py-3 border-bottom">
-      <div class="col">
-        <small class="mb-2">
-          {{ article.cintillo }}: {{ article.volanta }}
-        </small><br />
-        <img src="{{ article.photo.src}}" alt="{{ article.photo.alt}}" class="w-100 img-fluid border p-1 rounded" />
-        <h1 class="my-3">
-          <a routerLink="/article/{{ article.id }}" class="node">
-            {{ article.title }}
-          </a>
-        </h1>
-        <p class="lead">
-          {{ article.bajada }}
-        </p>
-      </div>
-    </article>
-  </div>
+<section class="container my-3 landing">
+  <article *ngFor="let article of (principal$ | async)">
+    <div><small>{{ article.cintillo }}: {{article.volanta}}</small></div>
+    <img src="{{article.photo.src}}" alt="{{article.photo.alt}}" class="img-thumbnail p-1 mr-2 mb-3" />
+    <h1 class="mb-0">
+      <a routerLink="/article/{{article.id}}">
+        {{ article.title }}
+      </a>
+    </h1>
+    <p class="border-bottom pb-3">
+      <em>{{article.bajada}}</em>
+    </p>
+  </article>
 
-  <div>
-    <article *ngFor="let article of secondary" class="row my-3 py-3 border-bottom">
-      <div class="col">
-        <small class="mb-2">
-          {{ article.cintillo }}: {{article.volanta}}
-        </small><br />
-        <img src="{{ article.photo.src}}" alt="{{ article.photo.alt}}" class="w-100 img-fluid border p-1 rounded" />
-        <h3 class="my-3">
-          <a routerLink="/article/{{ article.id }}" class="node">
-            {{ article.title }}
+  <article *ngFor="let article of (secondary$ | async)">
+    <div><small>{{article.cintillo}}: {{article.volanta}}</small></div>
+    <div class="row border-bottom pb-3">
+      <div class="col-3" *ngIf="article.photo.src">
+        <img src="{{ article.photo.src}}" alt="{{ article.photo.alt}}" class="img-thumbnail p-1" />
+      </div>
+      <div [ngClass]="{'col-9': article.photo.src, 'col-12': !article.photo.src}" class="col-9">
+
+        <h3 class="mb-0">
+          <a routerLink="/article/{{article.id}}">
+            {{article.title}}
           </a>
         </h3>
         <p>
-          {{ article.bajada }}
+          <em>{{article.bajada}}</em>
         </p>
       </div>
-    </article>
-  </div>
+    </div>
+  </article>
 </section>

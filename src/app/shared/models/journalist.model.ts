@@ -1,4 +1,5 @@
 export class Journalist {
+    id: number;
     title: string;
     body: string;
     orden: number;

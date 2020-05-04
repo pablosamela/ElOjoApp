@@ -10,7 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SectionComponent } from './content/section/section.component';
 import { LandingComponent } from './content/landing/landing.component';
 import { ArticleComponent } from './content/article/article.component';
-import { JournalistComponent } from './content/article/journalist/journalist.component';
+import { JournalistComponent } from './content/journalist/journalist.component';
+import { JournalistsSummaryComponent } from './content/journalists-summary/journalists-summary.component';
+import { JournalistCardComponent } from './content/article/journalist-card/journalist-card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { JournalistComponent } from './content/article/journalist/journalist.com
     SectionComponent,
     LandingComponent,
     ArticleComponent,
-    JournalistComponent
+    JournalistComponent,
+    JournalistCardComponent,
+    JournalistsSummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +36,3 @@ import { JournalistComponent } from './content/article/journalist/journalist.com
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-
-// https://medium.com/@motcowley/angular-folder-structure-d1809be95542
-// https://github.com/ngx-rocket/starter-kit/blob/master/tsconfig.json
-// https://itnext.io/building-an-enterprise-grade-angular-project-structure-f5be32533ba3

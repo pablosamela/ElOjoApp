@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ElOjoDigital": {
+    "elojodigital": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -36,7 +36,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ElOjoDigital",
+            "aot": true,
+            "outputPath": "dist/elojodigital",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -49,7 +50,10 @@
               "node_modules/bootstrap/scss/bootstrap.scss",
               "src/assets/sass/styles.sass"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -74,6 +78,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -82,18 +90,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ElOjoDigital:build"
+            "browserTarget": "elojodigital:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ElOjoDigital:build:production"
+              "browserTarget": "elojodigital:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ElOjoDigital:build"
+            "browserTarget": "elojodigital:build"
           }
         },
         "test": {
@@ -127,8 +135,9 @@
         }
       }
     },
-    "ElOjoDigital-e2e": {
+    "elojodigital-e2e": {
       "root": "e2e/",
+
       "projectType": "application",
       "prefix": "",
       "architect": {
@@ -136,11 +145,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ElOjoDigital:serve"
+            "devServerTarget": "elojodigital:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ElOjoDigital:serve:production"
+              "devServerTarget": "elojodigital:serve:production"
             }
           }
         },
@@ -156,5 +165,5 @@
       }
     }
   },
-  "defaultProject": "ElOjoDigital"
+  "defaultProject": "elojodigital"
 }

@@ -1,11 +1,15 @@
-<article class="m-2" *ngFor="let article of articles">
-  <small>{{article.cintillo}}: {{article.volanta}}</small><br>
-  <h3 class="my-2">
-    <a routerLink="/article/{{article.nid}}" class="my-2">
-      {{article.title}}
-    </a>
-  </h3>
-  <p class="border-bottom my-2 pb-2">
-    <em>{{article.bajada}}</em>
-  </p>
-</article>
+<div class="container sections my-3">
+  <h1>{{title}}</h1>
+  <article *ngFor="let article of (articles$ | async)">
+    <div><small>{{article.cintillo}}: {{article.volanta}}</small></div>
+    <img src="{{ article.photo.src}}" alt="{{ article.photo.alt}}" class="img-thumbnail p-1 mr-2 mb-3 float-left" *ngIf="article.photo.src" />
+    <h3 class="mb-0">
+      <a routerLink="/article/{{article.id}}">
+        {{article.title}}
+      </a>
+    </h3>
+    <p class="border-bottom pb-3">
+      <em>{{article.bajada}}</em>
+    </p>
+  </article>
+</div>

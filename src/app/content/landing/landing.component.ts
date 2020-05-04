@@ -1,32 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '@app/shared/services/http.service';
 import { Article } from '@app/shared/models/article.model';
+import { Observable } from 'rxjs';
+import { DataService } from '@app/shared/services/data.service';
 
 @Component({
   selector: 'ojo-landing',
   templateUrl: './landing.component.html'
 })
 export class LandingComponent implements OnInit {
-  principal: Article[];
-  secondary: Article[];
+  principal$: Observable<Article[]>;
+  secondary$: Observable<Article[]>;
 
-  constructor(private http: HttpService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.principal = [];
-    this.secondary = [];
-
-    this.http.get('json/nodequeue/principal').subscribe(
-      (httpResponse: Article[]) => {
-        this.principal = httpResponse;
-      }
-    );
-
-    this.http.get('json/nodequeue/secondary').subscribe(
-      (httpResponse: Article[]) => {
-        this.secondary = httpResponse;
-      }
-    );
+    this.principal$ = this.dataService.getArticlesByNodequeueName('principal');
+    this.secondary$ = this.dataService.getArticlesByNodequeueName('secondary');
   }
 
 }

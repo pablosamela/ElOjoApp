@@ -1,0 +1,16 @@
+<div class="border-bottom mb-3" *ngIf="(journalist$ | async) as journalist">
+  <div class="card-body">
+    <h4 class="card-title">Sobre {{journalist.title}}</h4>
+    <div  class="card-text">
+      <img src="{{journalist.photo}}" class="m-2 img-thumbnail float-left" alt="{{journalist.title}}"
+        style="width: 140px;">
+      <em>{{journalist.body}}.</em>
+      <footer class="blockquote-footer text-right">
+        <span class="text-muted"> Seguir en </span>
+        <a href="https://twitter.com/{{journalist.twitter}}" target="_blank">
+          @{{journalist.twitter}}
+        </a>
+      </footer>
+    </div>
+  </div>
+</div>

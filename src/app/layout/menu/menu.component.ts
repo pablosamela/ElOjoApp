@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '@app/shared/services/http.service';
+import { DataService } from '@app/shared/services/data.service';
+import { Tag } from '@app/shared/models/tag.model';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -7,17 +9,11 @@ import { HttpService } from '@app/shared/services/http.service';
   templateUrl: './menu.component.html'
 })
 export class MenuComponent implements OnInit {
-  items: any;
-  constructor(private httpService: HttpService) { }
+  tags$: Observable<Tag[]>;
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.httpService.get('json/json/vocabulary/1').subscribe(
-      response => {
-        if (response && response.sections) {
-          this.items = response.sections;
-        }
-      }
-    );
+    this.tags$ = this.dataService.getTagsByVocabularyId('1');
 
   }
 

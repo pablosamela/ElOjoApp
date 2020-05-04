@@ -1,0 +1,15 @@
+<div class="container">
+    <h1 class="border-bottom pb-3 mb-3">Analistas</h1>
+    <div class="row">
+        <div class="col-2 text-center" *ngFor="let journalist of (journalists$ | async)">
+            <a routerLink="/journalist/{{journalist.id}}">
+                <img src="{{journalist.photo}}" class="m-2 img-thumbnail float-left" alt="{{journalist.title}}"
+                style="width: 140px;">
+                {{journalist.title}}
+            </a><br>
+            <a href="https://twitter.com/{{journalist.twitter}}" target="_blank">
+                <small>@{{journalist.twitter}}</small>
+            </a>
+        </div>
+    </div>
+</div>
