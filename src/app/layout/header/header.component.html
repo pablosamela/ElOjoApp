@@ -1,13 +1,10 @@
 <header>
   <div class="container my-3">
-      <a href="/" title="El Ojo Digital">
-        <img src="/assets/img/logo.svg" alt="" />
-      </a>
-      <br />
-    <small>{{ today | date:'fullDate' }}</small>
-    <div class="float-right">
-      <a href="/journalists/">Analistas</a>
-    </div>
+    <a href="/" title="El Ojo Digital">
+      <img src="/assets/img/logo.svg" alt="" />
+    </a>
+    <br />
+    <small>{{ today | date:'fullDate':'-0300': 'es-AR'}}</small>
   </div>
   <ojo-menu></ojo-menu>
 </header>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeAr from '@angular/common/locales/es-AR';
 
 @Component({
   selector: 'ojo-header',
@@ -10,6 +12,7 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    registerLocaleData(localeAr, 'es-AR');
     this.today = Date.now();
   }
 
